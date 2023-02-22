@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {#  <h1>Update Thing</h1>#}
+  {#  <form method="POST">#}
+  {##}
+  {#    {{ form.as_p }}#}
+  {#    <input type="submit" value="SAVE">#}
+  {#  </form>#}
+
+  <div
+    class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+      <h5 class="text-xl font-medium text-gray-900 dark:text-white">Update a Loans</h5>
+      <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit" value="save">
+        </form>
+
+  </div>
+{% endblock content %}
