@@ -18,10 +18,12 @@ from django.urls import include, path
 from rest_framework_simplejwt import views as jwt_views
 from .views import MyTokenObtainPairView
 from django.views.generic.base import TemplateView
+from loans.views import approval
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/loans/", include("loans.urls")),
+    path('api/approval/', approval, name='approval_data'),
     path("api-auth/", include("rest_framework.urls")),
     path(
         "api/token/",
