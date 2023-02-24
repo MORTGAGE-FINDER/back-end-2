@@ -30,6 +30,6 @@ def pred_model(loan_amount, salary):
     test = pd.read_csv('test_data.csv')
     # return true is approved
     if logreg.predict(test)[0] == 1:
-        return 'CONGRATULATIONS You qualify for a loan'
+        return 'CONGRATULATIONS!! You May Qualify For A Loan'
     else:
-        'Unluckily, You do not qualify for a loan'
+        'Unluckily, You May Not Qualify For A Loan'
