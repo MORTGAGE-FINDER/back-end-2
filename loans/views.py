@@ -8,6 +8,7 @@ from .models import Loans
 from .permissions import IsOwnerOrReadOnly
 from .serializers import LoansSerializer
 from .machine_model import pred_model
+import json
 
 
 class LoansList(ListCreateAPIView):
@@ -25,10 +26,10 @@ class LoansDetail(RetrieveUpdateDestroyAPIView):
 def approval(request):
     print('start', request)
     if request.method == 'POST':
-        data = request.POST
-        # print('*start', data['salary'])
-        loan_amount = 200_000
-        salary = 100_000
+        data = json.loads(request.body)
+        print('*start', data)
+        loan_amount = data['loan']
+        salary = data['salary']
         prediction = pred_model(loan_amount, salary)
         return JsonResponse({'status': 'success', 'prediction': prediction})
     else:

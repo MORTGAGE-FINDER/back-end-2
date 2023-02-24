@@ -14,9 +14,10 @@ def create_test_data_file(loan_amount, salary):
 
 
 def pred_model(loan_amount, salary):
+    # return "Mansion"
     create_test_data_file(loan_amount, salary)
     # load data
-    ct_data = pd.read_csv("./ct_2017_Cont_output_no_outliers.csv")
+    ct_data = pd.read_csv("ct_2017_Cont_output_no_outliers.csv")
     # create variables
     data_cols = ['loan_amount_000s', "applicant_income_000s"]
     X = ct_data[data_cols]
@@ -26,6 +27,9 @@ def pred_model(loan_amount, salary):
     logreg = LogisticRegression(random_state=16)
     logreg.fit(X_train, y_train)
     # load test
-    test = pd.read_csv('./test_data.csv')
+    test = pd.read_csv('test_data.csv')
     # return true is approved
-    return logreg.predict(test)[0] == 1
+    if logreg.predict(test)[0] == 1:
+        return 'CONGRATULATIONS You qualify for a loan'
+    else:
+        'Unluckily, You do not qualify for a loan'
